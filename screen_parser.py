@@ -28,6 +28,7 @@ class ScreenParser(object):
                         ('r', [248., 27., 54.]),
                         ('r', [191., 46., 55.]),
                         ('r', [252., 63., 99.]),
+                        ('r', [246.,  122.,  175.]),
                         ('b', [22., 123., 232.]),
                         ('b', [159., 190., 208.]),
                         ('b', [48., 125., 186.]),
@@ -38,6 +39,8 @@ class ScreenParser(object):
                         ('w', [230., 230., 230.]),
                         ('p', [235, 34., 229.]),
                         ('p', [202., 162., 200.]),
+                        ('p', [244., 117., 240.]),
+                        ('p', [172.,   45.,  165.]),
                         ('y', [252., 244., 38.]),
                         ('y', [194., 198., 42.]),
                         ('y', [254., 247., 179.]),
@@ -75,7 +78,7 @@ class ScreenParser(object):
   def cell_index_to_cell(self, cell_index):
     return self.cells[cell_index[0]*self.cells_per_side + cell_index[1]]
 
-  def _classify(self, pixel, max_val=20.):
+  def _classify(self, pixel, max_val=45.):
     pixel = np.array(pixel)
     dists = [np.linalg.norm(pixel - color[1]) for color in self.color_chart]
     ind = np.argmin(dists)
@@ -102,7 +105,7 @@ if __name__ == "__main__":
   print(board)
   print(time.time()-a)
   print(sp.train(image))
-  probe = (3, 2)
+  probe = (0, 3)
   probe_pix = tuple(sp.cells[probe[0]*8+probe[1]])
   probe_val = image.getpixel(probe_pix)
   print(probe)
