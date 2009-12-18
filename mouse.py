@@ -13,6 +13,9 @@ def _rp(cmd):
 def move(loc):
     _rp('xdotool mousemove %d %d'%(loc[0], loc[1]))
 
+def hide():
+    move((0,300))
+
 def click():
     _rp('xdotool click 1')
 

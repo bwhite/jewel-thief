@@ -4,10 +4,10 @@ import random
 import numpy as np
 
 class AI(object):
-    def __init__(self, cells_per_side=8, pick_best_prob=.95, only_bottom_prob=0.25, only_top_prob=.0):
+    def __init__(self, cells_per_side=8, pick_best_prob=.95, only_bottom_prob=0.25, handle_hyper_prob=.25):
+        self.handle_hyper_prob = handle_hyper_prob
         self.pick_best_prob = pick_best_prob
         self.only_bottom_prob = only_bottom_prob
-        self.only_top_prob = only_top_prob
         self.cells_per_side = cells_per_side
         self.moves = ['d', 'r']
         self.move_offset = {'u':(0,-1), 'd':(0,1), 'l':(-1,0), 'r':(1,0)}
@@ -28,8 +28,6 @@ class AI(object):
         high = self.cells_per_side
         if random.random() < self.only_bottom_prob:
             low = 4
-        elif random.random() < self.only_top_prob:
-            high = 5;
         for y in range(low, high):
             for x in range(self.cells_per_side):
                 if board[y][x] == None:
@@ -39,6 +37,9 @@ class AI(object):
                         score = self._match(x, y, move, board)
                     except IndexError:
                         continue
+                    # Handle hypercube
+                    if random.random() < self.handle_hyper_prob and board[y][x] == 'h':
+                        score = 4
                     if score >= 3:
                         good_moves.append((score, (x, y, move)))
         try:

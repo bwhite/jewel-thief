@@ -36,4 +36,5 @@ if __name__ == "__main__":
         from_move = sp.cell_index_to_cell(cell_index)
         to_move = sp.move_offset[move] + from_move
         mouse.drag(from_move, to_move)
-        time.sleep(.1)
+        mouse.hide()
+        time.sleep(.01)

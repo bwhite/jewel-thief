@@ -23,19 +23,30 @@ class ScreenParser(object):
     # Setup color chart
     self.color_chart = [('g', [29., 180., 57.]),
                         ('g', [35., 151., 37.]),
+                        ('g', [90.,  236.,  159.]),
+                        ('g', [23., 167., 40.]),
                         ('r', [248., 27., 54.]),
                         ('r', [191., 46., 55.]),
+                        ('r', [252., 63., 99.]),
                         ('b', [22., 123., 232.]),
                         ('b', [159., 190., 208.]),
                         ('b', [48., 125., 186.]),
+                        ('b', [59.,  136.,  207.]),
                         ('w', [255., 255., 255.]),
                         ('w', [177.,  177.,  177.]),
+                        ('w', [198., 198., 198.]),
+                        ('w', [230., 230., 230.]),
                         ('p', [235, 34., 229.]),
                         ('p', [202., 162., 200.]),
                         ('y', [252., 244., 38.]),
                         ('y', [194., 198., 42.]),
+                        ('y', [254., 247., 179.]),
                         ('o', [221., 137., 51.]),
-                        ('o', [204., 182., 158.])]
+                        ('o', [222., 116., 38.]),
+                        ('o', [204., 182., 158.]),
+                        ('h', [154.,  135.,  109.]),
+                        ('h', [92.,  62.,  60.]),
+                        ('h', [90.,  114.,  136.])]
     self.color_chart = [(color[0], np.array(color[1]))
                         for color in self.color_chart]
     # Setup movement offsets
@@ -64,7 +75,7 @@ class ScreenParser(object):
   def cell_index_to_cell(self, cell_index):
     return self.cells[cell_index[0]*self.cells_per_side + cell_index[1]]
 
-  def _classify(self, pixel, max_val=45.):
+  def _classify(self, pixel, max_val=20.):
     pixel = np.array(pixel)
     dists = [np.linalg.norm(pixel - color[1]) for color in self.color_chart]
     ind = np.argmin(dists)
@@ -91,7 +102,7 @@ if __name__ == "__main__":
   print(board)
   print(time.time()-a)
   print(sp.train(image))
-  probe = (3, 1)
+  probe = (3, 2)
   probe_pix = tuple(sp.cells[probe[0]*8+probe[1]])
   probe_val = image.getpixel(probe_pix)
   print(probe)
