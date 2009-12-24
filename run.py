@@ -24,11 +24,9 @@ if __name__ == "__main__":
         board = sp.parse(image)
         if random.random() < .5:
             bad_spots = len([x for x in np.array(board).ravel() if x == None or x == 'w'])
-            if bad_spots > 25:
-                mouse.move_click((568,603))
-                time.sleep(.05)
-                mouse.move_click((910,327))
-                time.sleep(.1)
+            if bad_spots > 30:
+                mouse.move_click((490,575))
+                time.sleep(.5)
         try:
             cell_index, move = ai.think(board)
         except TypeError:
@@ -37,4 +35,4 @@ if __name__ == "__main__":
         to_move = sp.move_offset[move] + from_move
         mouse.drag(from_move, to_move)
         #mouse.hide()
-        time.sleep(.1)
+        time.sleep(.05)
