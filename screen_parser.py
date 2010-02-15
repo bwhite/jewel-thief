@@ -8,7 +8,7 @@ import Image
 import ImageFilter
 
 class ScreenParser(object):
-  def __init__(self, offset=(410., 272.), width=40., cells_per_side=8):# Also 390, 304
+  def __init__(self, offset=(398., 263.), width=40., cells_per_side=8):# Also 390, 304
     # Store parameters
     self.offset = np.array(offset)
     self.width = width

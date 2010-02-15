@@ -26,7 +26,10 @@ if __name__ == "__main__":
             bad_spots = len([x for x in np.array(board).ravel() if x == None or x == 'w'])
             if bad_spots > 30:
                 mouse.move_click((490,575))
+                time.sleep(.1)
+                mouse.move_click((910,298))
                 time.sleep(.5)
+                print('bad')
         try:
             cell_index, move = ai.think(board)
         except TypeError:
@@ -36,3 +39,4 @@ if __name__ == "__main__":
         mouse.drag(from_move, to_move)
         #mouse.hide()
         time.sleep(.05)
+        #time.sleep(.2)
