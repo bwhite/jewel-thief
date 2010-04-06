@@ -4,7 +4,7 @@ import random
 import numpy as np
 
 class AI(object):
-    def __init__(self, cells_per_side=8, pick_best_prob=.95, only_bottom_prob=0.0, handle_hyper_prob=.00):
+    def __init__(self, cells_per_side=8, pick_best_prob=.95, only_bottom_prob=0.0, handle_hyper_prob=.05):
         self.handle_hyper_prob = handle_hyper_prob
         self.pick_best_prob = pick_best_prob
         self.only_bottom_prob = only_bottom_prob

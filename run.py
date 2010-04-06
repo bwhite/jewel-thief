@@ -38,5 +38,5 @@ if __name__ == "__main__":
         to_move = sp.move_offset[move] + from_move
         mouse.drag(from_move, to_move)
         #mouse.hide()
-        time.sleep(.05)
+        #time.sleep(.05)
         #time.sleep(.2)
